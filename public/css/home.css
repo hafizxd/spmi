@@ -1,0 +1,498 @@
+.jumbotron{
+    margin-top: 10em;
+    margin-bottom: 10em;
+}
+.jumbotron img{
+    width: 80%;
+}
+.jumbotron .imageWrapper{
+    text-align: end;
+    margin-right: 4em;
+}
+.jumbotron h1{
+    font-size: 70px; 
+    text-shadow: 2px 0 black;
+    font-weight:bolder;
+}
+.jumbotron span{
+    font-size: 70px; 
+    text-shadow: 2px 0 #2A2A72;
+    font-weight:bolder;
+    color: #2A2A72;
+}
+
+.jumbotron .sloganBox{
+    margin-top: 5em;
+    background-color: #383886;
+    color: white;
+    padding: 30px 0;
+    border-radius: 20px;
+    box-shadow: 5px 5px black;
+}
+.jumbotron .sloganImage{
+    margin-left: 20px;
+}
+
+/* Organzation */
+.organization .title{
+  margin-bottom: 1em;
+}
+
+.organization .organizationName{
+    text-align: center;
+    font-size: 50px; 
+    text-shadow: 2px 0 black;
+    font-weight:bolder;
+    letter-spacing: 3px;
+}
+.organization p{
+    letter-spacing: 1.5px;
+}
+.organization-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 50px 50px 80px 50px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1),
+                        0 4px 4px rgba(0, 0, 0, 0.1),
+                        0 2px 2px rgba(0, 0, 0, 0.1);
+}
+.organization img {
+    width: 13em;
+    height: auto;
+}
+.show-more {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+.more-text {
+    display: none;
+}
+
+/* Rekam Jejak */
+.rekamJejak {
+    margin-top: 10em;
+    background-color: #f2d09d;
+    text-align: center;
+    padding: 50px;
+    border-radius: 20px;
+}
+
+.rekamJejak .title {
+    margin-bottom: 2em;
+}
+
+.rekamJejak h1 {
+    font-size: 45px;
+    letter-spacing: -1px;
+    font-weight: bolder;
+}
+
+.rekamJejak span {
+    color: #2A2A72;
+}
+
+.rekamJejak .desc {
+    max-width: 50em;
+    margin: auto;
+    letter-spacing: 1.3px;
+    margin-top: 2em;
+    font-size: 20px;
+}
+
+.rekamJejak .btn {
+    background-color: #4e7468;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+.rekamJejak .candidates {
+    margin-top: 4em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.rekamJejak .imageWrapper {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 0px 20px 0px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: calc(25.333% - 20px);
+    box-sizing: border-box;
+}
+
+.rekamJejak .imageWrapper img {
+    max-width: 10em;
+    max-height: 10em;
+}
+
+.rekamJejak .imageWrapper p {
+    margin-top: 1em;
+    font-size: 20px;
+}
+/* Quiz */
+.quiz{
+    margin-top: 10em;
+    background-color: #FBACBE;
+    text-align: center;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1),
+    0 4px 4px rgba(0, 0, 0, 0.1),
+    0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.quiz .title1{
+    background-color: #383886;
+    color: white;
+    max-width: 15rem;
+    padding: 10px 0px 5px 0px;
+    border-radius: 100px;
+    margin: auto;
+    transform: rotate(-3deg); 
+    font-weight:bolder;
+}
+.quiz .title1 h1{
+    text-shadow: 2px 0 #2A2A72;
+    font-weight:bolder;
+}
+.quiz .title2{
+    background-color: #2A2A72;
+    margin-top: -1px !important;
+    transform: rotate(-2deg); 
+    color: white;
+    max-width: 35rem;
+    margin: auto;
+    padding: 10px;
+    border-radius: 20px;
+}
+.quiz .title2 h1{
+    text-shadow: 2px 0 #2A2A72;
+    font-size: 60px;
+    font-weight:bolder;
+}
+
+.quiz h4{
+    max-width: 30em;
+    margin: 3em auto;
+    line-height: 1.8em;
+}
+.quiz .btn{
+    background-color: #4e7468;
+    color: white;
+    font-weight: bold;
+    padding:10px 30px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1),
+    0 4px 4px rgba(0, 0, 0, 0.1),
+    0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Voting */
+.voting{
+    margin-top: 10em;
+    margin-bottom: 5em;
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+}
+.voting h1{
+    font-size: 70px;
+    text-shadow: 2px 0 white;
+    font-size: 60px;
+    font-weight:bolder;
+}
+.voting .btn{
+    margin-top: 20px;
+    background-color: #4e7468;
+    color: white;
+    font-size: 20px;
+    padding: 15px 30px;
+    font-weight: bolder;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1),
+    0 4px 4px rgba(0, 0, 0, 0.1),
+    0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.voting img{
+    width: 20em;
+}
+/* Tablet */
+@media only screen and (min-width: 765px) and (max-width: 991px) {
+    .jumbotron img{
+        width: 80%;
+        margin-bottom: 5em;
+    }
+    .jumbotron .title{
+        min-width: 25em;
+    }
+    .jumbotron h1{
+        font-size: 50px; 
+    }
+    .jumbotron span{
+        font-size: 50px; 
+    }
+    .jumbotron .sloganBox h3{
+        font-size: 20px;
+        font-weight: bolder;
+    }
+    .jumbotron .sloganBox p{
+        color: rgba(255, 255, 255, 0.852);
+        font-size: 16px;
+    }
+    .jumbotron .sloganImage img{
+        width: 13em;
+        margin-left: -40px;
+    }
+    /* Organzation */
+    .organization .title{
+        margin-bottom: 1em;
+    }
+    .organization img{
+        width: 10em;
+    }
+    .organization .organizationName{
+        font-size: 30px; 
+        letter-spacing: 3px;
+        margin: 1em;
+    }
+    .rekamJejak .imageWrapper {
+        padding: 10px 0px 10px 0px;
+        width: calc(27.333% - 20px);
+    }
+    /* Rekam Jejak */
+    .rekamJejak{
+        margin-top: 5em;
+    }
+    .rekamJejak .imageWrapper {
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px 0px 20px 0px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        min-height: 10em;
+        max-height: 10em;
+        width: 45%;
+        box-sizing: border-box;
+    }
+
+    .rekamJejak .imageWrapper img {
+        max-width: 5em;
+        max-height: 5em;
+    }
+    
+    
+    .rekamJejak .imageWrapper p {
+        margin-top: 1em;
+        font-size: 20px;
+    }
+    .rekamJejak .btn {
+        margin-top: 30px;
+        font-weight: 500;
+    }
+    .quiz{
+        margin-top: 5em;
+    }
+    /* Voting */
+    .voting{
+        text-align: center;
+        margin-top: 5em;
+        padding: 40px;
+    }
+    .voting .title{
+        width: 100%;
+    }
+    .voting h1{
+        font-size: 30px;
+        font-weight:bold;
+    }
+    .voting .btn{
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .voting img{
+        display: none;
+    }
+}
+/* Mobile */
+@media only screen and (max-width: 600px) {
+    .jumbotron{
+        margin-top: 9em;
+        margin-bottom: 5em;
+    }
+    .jumbotron .imageWrapper img{
+        display: none;
+    }
+    .jumbotron .title{
+        text-align: center;
+    }
+    .jumbotron h1{
+        font-size: 50px; 
+    }
+    .jumbotron span{
+        font-size: 50px; 
+    }
+    .jumbotron .sloganBox{
+        margin: 5em auto 0 auto;
+        max-width: 95%;
+        padding: 10px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1),
+        0 4px 4px rgba(0, 0, 0, 0.1),
+        0 2px 2px rgba(0, 0, 0, 0.1);
+    }
+    .jumbotron .sloganBox h3{
+        font-size: 20px;
+        font-weight: bolder;
+    }
+    .jumbotron .sloganBox p{
+        color: rgba(255, 255, 255, 0.852);
+    }
+    .jumbotron .sloganImage{
+        text-align: start;
+        margin-left: 0px;
+    }
+    .jumbotron .sloganImage img{
+        width: 10em;
+        margin-left: -18px;
+    }
+
+    /* Organzation */
+    .organization .title{
+        margin-bottom: 1em;
+    }
+    .organization .contentWrapper{
+        min-width: 120%;
+    }
+    .organization .imageWrapper{
+        margin-bottom: -40px;
+        text-align: center;
+    }
+    .organization img{
+        max-width: 10em;
+    }
+    .organization .organizationName{
+        font-size: 30px; 
+        font-weight:bolder;
+        text-align: center;
+        margin-top: 1.5em;
+        margin-bottom: .6em;
+    }
+    /* Rekam Jejak */
+    .rekamJejak {
+        width: 95%;
+        margin-top: 5em;
+        padding: 40px;
+    }
+
+    .rekamJejak .title {
+        margin-bottom: 2em;
+    }
+
+    .rekamJejak h1 {
+        font-size: 35px;
+    }
+
+    .rekamJejak .desc {
+        letter-spacing: 1px;
+        font-size: 16px;
+    }
+
+    .rekamJejak .btn {
+        margin-top: 30px;
+        font-weight: 500;
+    }
+
+    .rekamJejak .candidates {
+        margin-top: 4em;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0px;
+    }
+
+    .rekamJejak .imageWrapper {
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px 0px 20px 0px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        min-height: 9em;
+        max-height: 9em;
+        width: 45%;
+        box-sizing: border-box;
+    }
+
+    .rekamJejak .imageWrapper img {
+        max-width: 5em;
+        max-height: 5em;
+    }
+    
+
+    .rekamJejak .imageWrapper p {
+        margin-top: 1em;
+        margin-bottom: -10px;
+        font-size: 14px;
+    }
+    /* Quiz */
+    .quiz{
+        width: 95%;
+        margin-top: 5em;
+    }
+    .quiz .title1{
+        transform: rotate(-1deg); 
+    }
+    .quiz .title1 h1{
+        font-size: 32px;
+        font-weight:500;
+    }
+    .quiz .title2{
+        transform: rotate(-0deg); 
+    }
+    .quiz .title2 h1{
+        font-size: 30px;
+        font-weight:600;
+    }
+
+    .quiz h4{
+        margin: 2em auto;
+        line-height: 1.5em;
+        font-size: 16px;
+    }
+    .quiz .btn{
+        font-weight: 400;
+    }
+    /* Voting */
+    .voting{
+        text-align: center;
+        margin-top: 5em;
+        padding: 40px;
+        max-width: 95%;
+    }
+    .voting h1{
+        font-size: 30px;
+        font-weight:bold;
+    }
+    .voting .btn{
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .voting img{
+        display: none;
+    }
+}

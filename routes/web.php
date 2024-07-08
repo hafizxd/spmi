@@ -1,0 +1,20 @@
+<?php
+use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Auth\AuthController;
+
+Route::get('/', function() {
+    return view('landing-page');
+})->name('landing-page');
+
+Route::get('login', [AuthController::class, 'loginIndex'])->name('auth.login.index');
+Route::post('login/store', [AuthController::class, 'loginStore'])->name('auth.login.store');
+
+Route::get('register', [AuthController::class, 'registerIndex'])->name('auth.register.index');
+Route::post('register/store', [AuthController::class, 'registerStore'])->name('auth.register.store');
+
+Route::middleware('auth')->group(function () {
+    Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
+});
+
+require __DIR__ . '/web/admin.php';

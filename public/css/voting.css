@@ -1,0 +1,55 @@
+
+.vote{
+    margin-top: 8em;
+}
+.candidate-card {
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.candidate-card .btn {
+    background-color: #4e7468;
+    color: white;
+    padding: 5px 30px;
+}
+.candidate-card img{
+    width: 14em;
+    height: 18em;
+    border-radius: 20px;
+    /* object-fit: cover; */
+}
+.candidate-card .card-body {
+    padding: 20px;
+}
+.candidate-card .card-body p{
+    font-size: 20px;
+    margin-top: 20px;
+}
+/* Tablet */
+@media only screen and (min-width: 765px) and (max-width: 991px) {
+   
+    .candidate-card img{
+        width: 10em;
+        height: 10em;
+    }
+    
+    .card{
+        height: 24em;
+    }
+    .candidate-card .card-body p{
+        margin-top: 10px;
+    }
+}
+/* Mobile */
+@media only screen and (max-width: 600px) {
+    
+    .vote{
+        margin-top: 7em;
+    }
+    .candidate-card img{
+        width: 10em;
+    }
+    .candidate-card .card-body p{
+        margin-top: 10px;
+    }
+}

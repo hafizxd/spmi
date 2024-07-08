@@ -1,0 +1,74 @@
+.title {
+    margin-top: 150px;
+    max-width: 40%;
+}
+.details-wrapper .candidatWrapper h1{
+    margin: .5em 0 1em 0;
+}
+.details-wrapper img{
+    width: 10em;
+    border-radius: 20px;
+}
+
+.details-wrapper h3{
+    margin: 1em 0;
+    letter-spacing: 1.3px;
+}
+.details-wrapper .card .content{
+    margin-left: .5em;
+}
+.details-wrapper .card .content p{
+    line-height: 26px;
+}
+.issue-candidate-wrapper{
+    background-color: #383886;
+    margin-top: 10em;
+    margin-bottom: 10em;
+    padding: 50px;
+    border-radius: 20px;
+}
+.issue-candidate-wrapper .content{
+    text-align: center;
+}
+.issue-candidate-wrapper img{
+    border-radius: 20px;
+    width: 10em;
+}
+.issue-candidate-wrapper .content h3{
+    color: white;
+
+    margin: 1em auto;
+    width: 14em;
+}
+@media only screen and (max-width: 600px) {
+    .title {
+        margin-top: 120px;
+        margin-bottom: 30px;
+        max-width: 70%;
+    }
+    .details-wrapper .candidatWrapper{
+        text-align: center;
+    }
+    .details-wrapper .candidatWrapper h1{
+        font-size: 22px;
+    }
+    
+    .details-wrapper h3{
+        letter-spacing: 1.3px;
+    }
+    .details-wrapper .card .content p{
+        line-height: 24px;
+    }
+    .issue-candidate-wrapper{
+        margin-top: 5em;
+        margin-bottom: 5em;
+        padding: 30px;
+        border-radius: 0px;
+    }
+    .issue-candidate-wrapper img{
+        width: 7em;
+    }
+    .issue-candidate-wrapper .content h3{
+        font-size: 20px;
+    }
+}
