@@ -13,7 +13,7 @@ use Illuminate\Validation\Rule;
 
 class AuditorController extends Controller
 {
-    private $bladePrefix = 'admin.users.auditor.';
+    private $bladePrefix = 'admin.users.auditors.';
 
     public function index()
     {

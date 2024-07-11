@@ -18,3 +18,9 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/web/admin.php';
+
+use App\Http\Controllers\Resource\ResourceController;
+
+Route::group(['prefix' => 'resources', 'as' => 'resource.'], function () {
+    Route::get('prodi', [ResourceController::class, 'getProdi'])->name('prodi.index');
+});

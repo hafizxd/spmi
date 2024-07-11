@@ -12,4 +12,12 @@ class Auditor extends Model
     public $table = 'auditors';
 
     protected $guarded = [];
+
+    public function jurusan() {
+        return $this->belongsTo(Jurusan::class);
+    }
+
+    public function prodi() {
+        return $this->belongsTo(Prodi::class);
+    }
 }
