@@ -28,6 +28,13 @@
                                     <li><a href="{{ route('admin.users.auditors.index') }}">Auditor</a></li>
                                 </ul>
                             </li>
+                            <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="book"></i><span>Audit</span></a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="{{ route('admin.audits.standards.index') }}">Standar</a></li>
+                                    <li><a href="{{ route('admin.audits.incompatibilities.index') }}">Ketidaksesuaian</a></li>
+                                    <li><a href="{{ route('admin.audits.cycles.index') }}">Siklus</a></li>
+                                </ul>
+                            </li>
 
                         </ul>
                     </li>

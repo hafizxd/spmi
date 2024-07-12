@@ -6,6 +6,10 @@
 	}
 }
 
+p {
+	color: #2b2b2b !important;
+}
+
 .main-container {
 	/* font-family: 'Lato'; */
 	width: fit-content;
