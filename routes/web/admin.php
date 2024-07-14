@@ -1,6 +1,7 @@
 <?php
 
 use App\Constants\UserRole;
+use App\Http\Controllers\Admin\Audits\AuditController;
 use App\Http\Controllers\Admin\Audits\CycleController;
 use App\Http\Controllers\Admin\Audits\IncompatibilityController;
 use App\Http\Controllers\Admin\Audits\StandardController;
@@ -20,6 +21,7 @@ Route::group(['middleware' => 'auth:' . UserRole::ADMIN, 'prefix' => 'admin', 'a
     });
 
     Route::group(['prefix' => 'audits', 'as' => 'audits.'], function () {
+        Route::resource('audits', AuditController::class);
         Route::resource('cycles', CycleController::class);
         Route::resource('standards', StandardController::class);
         Route::resource('incompatibilities', IncompatibilityController::class);

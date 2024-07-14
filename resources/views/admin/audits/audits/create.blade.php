@@ -2,7 +2,7 @@
 @section('content')
     <ol class="breadcrumb p-l-0">
         <li class="breadcrumb-item"><a href="#">User</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('admin.users.auditors.index') }}">Auditor</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('admin.audits.audits.index') }}">Audit</a></li>
         <li class="breadcrumb-item active">Tambah</li>
     </ol>
 
@@ -11,19 +11,34 @@
             <div class="card">
                 <div class="row">
                     <div class="col-md-6 d-flex mt-2 p-0">
-                        <h4>Tambah Auditor</h4>
+                        <h4>Tambah Audit</h4>
                     </div>
                     <div class="col-md-6 p-0">
-                        <a href="{{ route('admin.users.auditors.index') }}" class="btn btn-danger btn-sm ms-2">Back</a>
+                        <a href="{{ route('admin.audits.audits.index') }}" class="btn btn-danger btn-sm ms-2">Back</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-sm-12">
             <div class="card">
-                <form class="p-4" method="post" action="{{ route('admin.users.auditors.store') }}">
+                <form class="p-4" method="post" action="{{ route('admin.audits.audits.store') }}">
                     @csrf
                     <div class="form-row">
+
+                        <div class="col mb-4">
+                            <label for="cycle_id">Siklus</label>
+                            <select name="cycle_id" id="cycle_id" class="form-control js-example-basic-single @error('cycle_id') is-invalid @enderror">
+                                <option value="" disabled selected>Pilih Siklus</option>
+                                @foreach ($cycles as $value)
+                                    <option value="{{ $value->id }}">{{ $value->order_no . ' - ' . $value->year }}</option>
+                                @endforeach
+                            </select>
+                            @error('cycle_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
                         <div class="col mb-4">
                             <label for="jurusan_id">Jurusan</label>
                             <select name="jurusan_id" id="jurusan_id" class="form-control js-example-basic-single @error('jurusan_id') is-invalid @enderror">
@@ -49,54 +64,30 @@
                             @enderror
                         </div>
                         <div class="col mb-4">
-                            <label for="name">Auditor</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" placeholder="Nama Kajur Lengkap Gelar">
-                            @error('name')
+                            <label for="auditor_id_1">Ketua Auditor</label>
+                            <select name="auditor_1_id" id="auditor_id_1" class="form-control select @error('auditor_1_id') is-invalid @enderror">
+                            </select>
+                            @error('auditor_1_id')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
                         <div class="col mb-4">
-                            <label for="nidn">NIDN</label>
-                            <input type="text" class="form-control @error('nidn') is-invalid @enderror" id="nidn" name="nidn" value="{{ old('nidn') }}" placeholder="Nomor Induk Dosen Nasional">
-                            @error('nidn')
+                            <label for="auditor_id_2">Anggota Auditor 1</label>
+                            <select name="auditor_2_id" id="auditor_id_2" class="form-control select @error('auditor_2_id') is-invalid @enderror">
+                            </select>
+                            @error('auditor_2_id')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
                         <div class="col mb-4">
-                            <label for="phone">Nomor Telepon</label>
-                            <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{ old('phone') }}" placeholder="Nomor Telepon">
-                            @error('phone')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="col mb-4">
-                            <label for="email">Email</label>
-                            <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" placeholder="Email Aktif">
-                            @error('email')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="col mb-4">
-                            <label for="password">Password</label>
-                            <input type="password" au class="form-control @error('password') is-invalid @enderror" id="password" name="password" value="{{ old('password') }}" placeholder="Password">
-                            @error('password')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="col mb-4">
-                            <label for="password_confirm">Confirm Password</label>
-                            <input type="password" au class="form-control @error('password_confirm') is-invalid @enderror" id="password_confirm" name="password_confirm" value="{{ old('password_confirm') }}" placeholder="Confirm Password">
-                            @error('password_confirm')
+                            <label for="auditor_id_3">Anggota Auditor 2</label>
+                            <select name="auditor_3_id" id="auditor_id_3" class="form-control select @error('auditor_3_id') is-invalid @enderror">
+                            </select>
+                            @error('auditor_3_id')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -130,7 +121,7 @@
                 },
                 success: function(data) {
                     if (data.success == true) {
-                        let options = ''
+                        let options = "<option value='' disabled selected>Pilih Prodi</option>";
 
                         if (data.payload.lenth == 0) {
                             options += "<option value='' disabled selected>Tidak ada data prodi</option>";
@@ -151,8 +142,51 @@
             });
         }
 
+        function populateAuditor() {
+            let prodiId = $('#prodi_id').val()
+            console.log(prodiId)
+            if (prodiId == "" || prodiId == "null" || prodiId == null)
+                return
+
+            $.ajax({
+                type: "GET",
+                url: "{{ route('resource.auditors.index') }}",
+                dataType: 'json',
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    'prodi_id': prodiId
+                },
+                success: function(data) {
+                    if (data.success == true) {
+                        let options = "<option value='' disabled selected>Pilih Auditor</option>";
+
+                        if (data.payload.lenth == 0) {
+                            options += "<option value='' disabled selected>Tidak ada data auditor</option>";
+                        } else {
+                            data.payload.forEach(val => {
+                                options += "<option value='" + val.id + "'> " + val.user.name + "</option>";
+                            })
+                        }
+
+                        $('#auditor_id_1').html(options)
+                        $('#auditor_id_2').html(options)
+                        $('#auditor_id_3').html(options)
+                    } else {
+                        alert('Terjadi kesalahan data')
+                    }
+                },
+                error: function(error) {
+                    alert('Terjadi kesalahan')
+                }
+            });
+        }
+
         $('#jurusan_id').on('change', function() {
             populateProdi()
+        });
+
+        $('#prodi_id').on('change', function() {
+            populateAuditor()
         });
     </script>
 @endpush

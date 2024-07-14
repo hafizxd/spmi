@@ -18,24 +18,33 @@
                     </li>
                     <li class="menu-box">
                         <ul>
-
-                            <li class="sidebar-list">
-                                <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.dashboard') }}"><i data-feather="home"> </i><span>Dashboard</span></a>
-                            </li>
-                            <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="users"></i><span>User</span></a>
-                                <ul class="sidebar-submenu">
-                                    <li><a href="{{ route('admin.users.unit-jurusan.index') }}">Unit</a></li>
-                                    <li><a href="{{ route('admin.users.auditors.index') }}">Auditor</a></li>
-                                </ul>
-                            </li>
-                            <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="book"></i><span>Audit</span></a>
-                                <ul class="sidebar-submenu">
-                                    <li><a href="{{ route('admin.audits.standards.index') }}">Standar</a></li>
-                                    <li><a href="{{ route('admin.audits.incompatibilities.index') }}">Ketidaksesuaian</a></li>
-                                    <li><a href="{{ route('admin.audits.cycles.index') }}">Siklus</a></li>
-                                </ul>
-                            </li>
-
+                            @if (auth()->user()->role == \App\Constants\UserRole::ADMIN)
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.dashboard') }}"><i data-feather="home"> </i><span>Dashboard</span></a>
+                                </li>
+                                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="users"></i><span>User</span></a>
+                                    <ul class="sidebar-submenu">
+                                        <li><a href="{{ route('admin.users.unit-jurusan.index') }}">Unit</a></li>
+                                        <li><a href="{{ route('admin.users.auditors.index') }}">Auditor</a></li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="book"></i><span>Audit</span></a>
+                                    <ul class="sidebar-submenu">
+                                        <li><a href="{{ route('admin.audits.audits.index') }}">Audit</a></li>
+                                        <li><a href="{{ route('admin.audits.standards.index') }}">Standar</a></li>
+                                        <li><a href="{{ route('admin.audits.incompatibilities.index') }}">Ketidaksesuaian</a></li>
+                                        <li><a href="{{ route('admin.audits.cycles.index') }}">Siklus</a></li>
+                                    </ul>
+                                </li>
+                            @elseif (auth()->user()->role == \App\Constants\UserRole::AUDITOR)
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="{{ route('auditor.dashboard') }}"><i data-feather="home"> </i><span>Dashboard</span></a>
+                                </li>
+                            @elseif (auth()->user()->role == \App\Constants\UserRole::UNIT_JURUSAN || auth()->user()->role == \App\Constants\UserRole::UNIT_PRODI)
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="{{ route('unit.dashboard') }}"><i data-feather="home"> </i><span>Dashboard</span></a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
                 </ul>

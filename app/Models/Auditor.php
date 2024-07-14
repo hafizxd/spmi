@@ -20,4 +20,8 @@ class Auditor extends Model
     public function prodi() {
         return $this->belongsTo(Prodi::class);
     }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

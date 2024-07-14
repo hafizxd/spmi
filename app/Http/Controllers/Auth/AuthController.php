@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Constants\UserRole;
 use App\Http\Controllers\Controller;
+use App\Models\Cycle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -31,11 +32,43 @@ class AuthController extends Controller
                 return redirect()->route('admin.dashboard');
             }
 
-            return redirect()->route('landing-page');
+            return redirect()->route('auth.cycles.index');
         }
 
         Alert::error('Failed', 'Username / Password Salah');
         return back();
+    }
+
+    public function cycleIndex()
+    {
+        $cycles = Cycle::orderBy('order_no')->get();
+
+        return view('auth.cycles', compact('cycles'));
+    }
+
+    public function cycleStore(Request $request)
+    {
+        $request->validate([
+            'cycle_id' => 'required|exists:cycles,id',
+        ]);
+
+        $redirectRoute = '';
+        switch (Auth::user()->role) {
+            case UserRole::AUDITOR:
+                $redirectRoute = 'auditor.dashboard';
+                break;
+
+            case UserRole::UNIT_JURUSAN:
+            case UserRole::UNIT_PRODI:
+                $redirectRoute = 'unit.dashboard';
+                break;
+
+            default:
+                $redirectRoute = 'landing-page';
+                break;
+        }
+
+        return redirect()->route($redirectRoute);
     }
 
     public function logout(Request $request)
