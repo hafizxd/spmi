@@ -32,10 +32,6 @@
 <body>
     <div class="container">
         <div style="background:url(../images/cover-lap.jpg) no-repeat; background-size:100%">
-            <br><br><br><br><br><br><br><br><br>
-            <div class="text-center">
-            </div>
-            <br><br>
             <div class="row">
                 <div class="col-md-8">
                     <div class="table-responsive">
