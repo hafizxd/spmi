@@ -32,10 +32,18 @@ class UnitJurusanController extends Controller
             'name' => 'required',
             'nidn' => 'nullable',
             'phone' => 'nullable',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email',
             'password' => 'required|min:8',
             'password_confirm' => 'required|same:password',
         ]);
+
+        $existsUser = User::where('email', $request->email)
+            ->where('role', UserRole::UNIT_JURUSAN)
+            ->exists();
+        if ($existsUser) {
+            alert()->error('Gagal', 'Sudah terdapat user '.UserRole::label(UserRole::UNIT_JURUSAN). ' dengan email tersebut');
+            return redirect()->back();
+        }
 
         $password = Hash::make($request->password);
 
@@ -81,7 +89,7 @@ class UnitJurusanController extends Controller
             'name' => 'required',
             'nidn' => 'nullable',
             'phone' => 'nullable',
-            'email' => ['required', 'email', Rule::unique('users')->ignore($id)],
+            'email' => ['required', 'email', Rule::unique('users')->ignore($id)->where(fn (\Illuminate\Database\Query\Builder $query) => $query->where('role', UserRole::UNIT_JURUSAN))],
         ]);
 
         $user->update([

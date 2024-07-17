@@ -16,12 +16,18 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function loginStore(Request $request)
+    public function loginStore(Request $request, $userRole)
     {
+        if (!in_array($userRole, UserRole::getIds())) {
+            abort(404);
+        }
+
         $credentials = $request->validate([
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required'
         ]);
+
+        $credentials['role'] = $userRole;
 
         $remember_me = $request->has('remember') ? true : false;
 

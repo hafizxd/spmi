@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Users;
 use App\Constants\UserRole;
 use App\Http\Controllers\Controller;
 use App\Models\Prodi;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -37,12 +38,21 @@ class AuditorController extends Controller
             'name' => 'required',
             'nidn' => 'nullable',
             'phone' => 'nullable',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email',
             'password' => 'required|min:8',
             'password_confirm' => 'required|same:password',
         ]);
 
         $password = Hash::make($request->password);
+
+        $existsUser = User::where('email', $request->email)
+            ->where('role', UserRole::AUDITOR)
+            ->exists();
+        if ($existsUser) {
+            alert()->error('Gagal', 'Sudah terdapat user '.UserRole::label(UserRole::AUDITOR). ' dengan email tersebut');
+            return redirect()->back();
+        }
+
 
         $user = User::create([
             'name' => $request->name,
@@ -87,7 +97,7 @@ class AuditorController extends Controller
             'name' => 'required',
             'nidn' => 'nullable',
             'phone' => 'nullable',
-            'email' => ['required', 'email', Rule::unique('users')->ignore($id)],
+            'email' => ['required', 'email', Rule::unique('users')->ignore($id)->where(fn (\Illuminate\Database\Query\Builder $query) => $query->where('role', UserRole::AUDITOR))],
         ]);
 
         $user->update([

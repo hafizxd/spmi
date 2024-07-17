@@ -31,10 +31,18 @@ class UnitProdiController extends Controller
             'name' => 'required',
             'nidn' => 'nullable',
             'phone' => 'nullable',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email',
             'password' => 'required|min:8',
             'password_confirm' => 'required|same:password',
         ]);
+
+        $existsUser = User::where('email', $request->email)
+            ->where('role', UserRole::UNIT_PRODI)
+            ->exists();
+        if ($existsUser) {
+            alert()->error('Gagal', 'Sudah terdapat user '.UserRole::label(UserRole::UNIT_PRODI). ' dengan email tersebut');
+            return redirect()->back();
+        }
 
         $password = Hash::make($request->password);
 
@@ -93,7 +101,7 @@ class UnitProdiController extends Controller
             'name' => 'required',
             'nidn' => 'nullable',
             'phone' => 'nullable',
-            'email' => ['required', 'email', Rule::unique('users')->ignore($prodiId)],
+            'email' => ['required', 'email', Rule::unique('users')->ignore($prodiId)->where(fn (\Illuminate\Database\Query\Builder $query) => $query->where('role', UserRole::UNIT_PRODI))],
         ]);
 
         $user->update([

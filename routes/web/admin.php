@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Audits\AuditController;
 use App\Http\Controllers\Admin\Audits\CycleController;
 use App\Http\Controllers\Admin\Audits\IncompatibilityController;
 use App\Http\Controllers\Admin\Audits\StandardController;
+use App\Http\Controllers\Admin\Users\AdminController;
 use App\Http\Controllers\Admin\Users\UnitJurusanController;
 use App\Http\Controllers\Admin\Users\UnitProdiController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -29,6 +30,7 @@ Route::group(['middleware' => 'auth:' . UserRole::ADMIN, 'prefix' => 'admin', 'a
         Route::resource('unit-jurusan', UnitJurusanController::class);
         Route::resource('unit-jurusan/{jurusan}/unit-prodi', UnitProdiController::class);
         Route::resource('auditors', AuditorController::class);
+        Route::resource('admins', AdminController::class);
     });
 
     Route::group(['prefix' => 'audits', 'as' => 'audits.'], function () {
@@ -37,4 +39,6 @@ Route::group(['middleware' => 'auth:' . UserRole::ADMIN, 'prefix' => 'admin', 'a
         Route::resource('standards', StandardController::class);
         Route::resource('incompatibilities', IncompatibilityController::class);
     });
+
+    Route::resource('audits', AuditController::class);
 });

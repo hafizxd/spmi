@@ -66,6 +66,10 @@
                         <div class="col mb-4">
                             <label for="auditor_id_1">Ketua Auditor</label>
                             <select name="auditor_1_id" id="auditor_id_1" class="form-control select @error('auditor_1_id') is-invalid @enderror">
+                                <option value="" disabled selected>Pilih Auditor</option>
+                                @foreach ($auditors as $value)
+                                    <option value="{{ $value->auditor->id }}">{{ $value->name }}</option>
+                                @endforeach
                             </select>
                             @error('auditor_1_id')
                                 <div class="invalid-feedback">
@@ -76,6 +80,10 @@
                         <div class="col mb-4">
                             <label for="auditor_id_2">Anggota Auditor 1</label>
                             <select name="auditor_2_id" id="auditor_id_2" class="form-control select @error('auditor_2_id') is-invalid @enderror">
+                                <option value="" disabled selected>Pilih Auditor</option>
+                                @foreach ($auditors as $value)
+                                    <option value="{{ $value->auditor->id }}">{{ $value->name }}</option>
+                                @endforeach
                             </select>
                             @error('auditor_2_id')
                                 <div class="invalid-feedback">
@@ -86,6 +94,10 @@
                         <div class="col mb-4">
                             <label for="auditor_id_3">Anggota Auditor 2</label>
                             <select name="auditor_3_id" id="auditor_id_3" class="form-control select @error('auditor_3_id') is-invalid @enderror">
+                                <option value="" disabled selected>Pilih Auditor</option>
+                                @foreach ($auditors as $value)
+                                    <option value="{{ $value->auditor->id }}">{{ $value->name }}</option>
+                                @endforeach
                             </select>
                             @error('auditor_3_id')
                                 <div class="invalid-feedback">
@@ -142,51 +154,8 @@
             });
         }
 
-        function populateAuditor() {
-            let prodiId = $('#prodi_id').val()
-            console.log(prodiId)
-            if (prodiId == "" || prodiId == "null" || prodiId == null)
-                return
-
-            $.ajax({
-                type: "GET",
-                url: "{{ route('resource.auditors.index') }}",
-                dataType: 'json',
-                data: {
-                    '_token': '{{ csrf_token() }}',
-                    'prodi_id': prodiId
-                },
-                success: function(data) {
-                    if (data.success == true) {
-                        let options = "<option value='' disabled selected>Pilih Auditor</option>";
-
-                        if (data.payload.lenth == 0) {
-                            options += "<option value='' disabled selected>Tidak ada data auditor</option>";
-                        } else {
-                            data.payload.forEach(val => {
-                                options += "<option value='" + val.id + "'> " + val.user.name + "</option>";
-                            })
-                        }
-
-                        $('#auditor_id_1').html(options)
-                        $('#auditor_id_2').html(options)
-                        $('#auditor_id_3').html(options)
-                    } else {
-                        alert('Terjadi kesalahan data')
-                    }
-                },
-                error: function(error) {
-                    alert('Terjadi kesalahan')
-                }
-            });
-        }
-
         $('#jurusan_id').on('change', function() {
             populateProdi()
-        });
-
-        $('#prodi_id').on('change', function() {
-            populateAuditor()
         });
     </script>
 @endpush

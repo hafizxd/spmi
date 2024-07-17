@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Audits;
+namespace App\Http\Controllers\Admin;
 
 use App\Constants\RepairmentStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Audit;
-use App\Models\Auditor;
 use App\Models\Cycle;
 use App\Models\Jurusan;
 use App\Models\Standard;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class AuditController extends Controller
+class FileController extends Controller
 {
     public function index() {
         $audits = Audit::orderBy('created_at', 'desc')->paginate(10);

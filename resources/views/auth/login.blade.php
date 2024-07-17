@@ -42,12 +42,13 @@
           <div class="login-card">
             <div>
               <div class="login-main"> 
-                <form action="{{ route('auth.login.store') }}" method="POST" class="theme-form">
+                <form action="{{ route('auth.login.store', request()->userRole) }}" method="POST" class="theme-form">
                   @csrf
 
                   <div class="text-center mb-5">
                       <img class="img-fluid for-light mb-3" src="{{ url('/html/assets/images/logo/login.png') }}" alt="loginpage">
                       <h5>Sistem Penjamin Mutu Internal (SPMI)</h5>
+                      <h5>{{ \App\Constants\UserRole::label(request()->userRole) }}</h5>
                   </div>
 
                   
@@ -72,7 +73,6 @@
                   </div>
                   <div class="form-group">
                     <button class="btn btn-primary btn-block w-100 mt-3" type="submit">Login</button>
-                    <a href="#" class="btn btn-outline-primary btn-block w-100 mt-3" type="button">Buat Akun</a>
                   </div>
                   <div class="form-group">
                     <p class="text-center">Copyright &copy; SPMI Polines 2024</p>

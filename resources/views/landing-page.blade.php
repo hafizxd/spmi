@@ -63,7 +63,10 @@
                                             <a href="{{ route('unit.dashboard') }}" class="btn btn-outline-primary btn-block w-100 mt-3" type="button">Dashboard Unit</a>
                                         @endif
                                     @else
-                                        <a href="{{ route('auth.login.index') }}" class="btn btn-outline-primary btn-block w-100 mt-3" type="button">Login</a>
+                                        <a href="{{ route('auth.login.index', \App\Constants\UserRole::ADMIN) }}" class="btn btn-outline-primary btn-block w-100 mt-3" type="button">Login LPM</a>
+                                        <a href="{{ route('auth.login.index', \App\Constants\UserRole::AUDITOR) }}" class="btn btn-outline-info btn-block w-100 mt-3" type="button">Login Auditor</a>
+                                        <a href="{{ route('auth.login.index', \App\Constants\UserRole::UNIT_JURUSAN) }}" class="btn btn-outline-warning btn-block w-100 mt-3" type="button">Login Unit Jurusan</a>
+                                        <a href="{{ route('auth.login.index', \App\Constants\UserRole::UNIT_PRODI) }}" class="btn btn-outline-secondary btn-block w-100 mt-3" type="button">Login Unit Prodi</a>
                                     @endguest
                                 </div>
                                 <div class="form-group">
