@@ -106,7 +106,7 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td>Telpon</td>
-                            <td>: </td>
+                            <td>: {{ $audit->prodi?->user?->phone }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -127,7 +127,7 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td>Telpon</td>
-                            <td>: </td>
+                            <td>: {{ $audit->auditor1?->user?->phone }}</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -147,7 +147,7 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td>Telpon</td>
-                            <td>: </td>
+                            <td>: {{ $audit->auditor2?->user?->name }}</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -167,9 +167,7 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td>Telpon</td>
-                            <td>:
-                                &nbsp;
-                            </td>
+                            <td>: {{ $audit->auditor3?->user?->name }}</td>
                         </tr>
                     </tbody>
                 </table>
