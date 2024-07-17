@@ -147,7 +147,7 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td>Telpon</td>
-                            <td>: {{ $audit->auditor2?->user?->name }}</td>
+                            <td>: {{ $audit->auditor2?->user?->phone }}</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
@@ -167,7 +167,7 @@
                         <tr>
                             <td>&nbsp;</td>
                             <td>Telpon</td>
-                            <td>: {{ $audit->auditor3?->user?->name }}</td>
+                            <td>: {{ $audit->auditor3?->user?->phone }}</td>
                         </tr>
                     </tbody>
                 </table>
