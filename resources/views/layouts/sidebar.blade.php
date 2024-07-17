@@ -1,8 +1,8 @@
 <div class="sidebar-wrapper">
     <div>
         <div class="logo-wrapper">
-            <a href="{{ route('admin.dashboard') }}">
-                {{-- <img class="img-fluid for-light" src="{{ url('/html/assets/images/logo/logo.png') }}" alt=""> --}}
+            <a href="{{ route('admin.dashboard') }}" class="d-flex gap-2">
+                <img class="img-fluid for-light" style="max-width: 60px;" src="{{ url('/html/assets/images/logo/logo.png') }}" alt="">
                 <h4 style="color: white; margin-top: 10px;">Polines SPMI</h4>
             </a>
             <div class="back-btn"><i class="fa fa-angle-left"></i></div>
@@ -42,12 +42,28 @@
                                         <li><a href="{{ route('admin.audits.cycles.index') }}">Siklus</a></li>
                                     </ul>
                                 </li>
+                                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="briefcase"></i><span>Files</span></a>
+                                    <ul class="sidebar-submenu">
+                                        <li><a href="{{ route('admin.files.index', 'Auditor') }}">Untuk Auditor</a></li>
+                                        <li><a href="{{ route('admin.files.index', 'Unit') }}">Untuk Unit</a></li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="book-open"></i><span>Laporan</span></a>
+                                    <ul class="sidebar-submenu">
+                                        <li><a href="{{ route('admin.rekap.index') }}">Rekap</a></li>
+                                    </ul>
+                                </li>
                             @elseif (auth()->user()->role == \App\Constants\UserRole::AUDITOR)
                                 <li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title link-nav" href="{{ route('auditor.dashboard') }}"><i data-feather="home"> </i><span>Dashboard</span></a>
                                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="book"></i><span>Audit</span></a>
                                         <ul class="sidebar-submenu">
                                             <li><a href="{{ route('auditor.audits.index') }}">Proses</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="user"></i><span>Profile</span></a>
+                                        <ul class="sidebar-submenu">
+                                            <li><a href="{{ route('profiles.index') }}">Edit</a></li>
                                         </ul>
                                     </li>
                                 </li>
@@ -57,6 +73,11 @@
                                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="book"></i><span>Audit</span></a>
                                         <ul class="sidebar-submenu">
                                             <li><a href="{{ route('unit.audits.index') }}">Proses</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="user"></i><span>Profile</span></a>
+                                        <ul class="sidebar-submenu">
+                                            <li><a href="{{ route('profiles.index') }}">Edit</a></li>
                                         </ul>
                                     </li>
                                 </li>

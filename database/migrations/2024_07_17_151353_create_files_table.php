@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('cycle_id')->constrained('cycles', 'id')->onDelete('cascade');
             $table->string('title');
             $table->string('attachment');
             $table->enum('type', ['Unit', 'Auditor']);

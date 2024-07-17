@@ -8,8 +8,8 @@
     <meta name="description" content="Enzo admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Enzo admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{{ url('/html/assets/images/favicon/favicon.png') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ url('/html/assets/images/favicon/favicon.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url('/html/assets/images/logo/logo.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url('/html/assets/images/logo/logo.png') }}" type="image/x-icon">
     <title>SPMI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,11 +47,9 @@
                             <div class="theme-form">
 
                                 <div class="mb-5 text-center">
-                                    <img class="img-fluid for-light mb-3" src="{{ url('/html/assets/images/logo/login.png') }}" alt="loginpage">
-                                    <h5>Landing Page</h5>
+                                    <img class="img-fluid for-light mb-3" style="max-width: 120px;" src="{{ url('/html/assets/images/logo/logo2.png') }}" alt="loginpage">
+                                    <h5>Sistem Penjamin Mutu Internal (SPMI)</h5>
                                 </div>
-
-
 
                                 <div class="form-group">
                                     @auth

@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\Audits\AuditController;
 use App\Http\Controllers\Admin\Audits\CycleController;
 use App\Http\Controllers\Admin\Audits\IncompatibilityController;
 use App\Http\Controllers\Admin\Audits\StandardController;
+use App\Http\Controllers\Admin\FileController;
+use App\Http\Controllers\Admin\RekapController;
 use App\Http\Controllers\Admin\Users\AdminController;
 use App\Http\Controllers\Admin\Users\UnitJurusanController;
 use App\Http\Controllers\Admin\Users\UnitProdiController;
@@ -40,5 +42,6 @@ Route::group(['middleware' => 'auth:' . UserRole::ADMIN, 'prefix' => 'admin', 'a
         Route::resource('incompatibilities', IncompatibilityController::class);
     });
 
-    Route::resource('audits', AuditController::class);
+    Route::resource('{type}/files', FileController::class);
+    Route::get('rekap', [RekapController::class, 'index'])->name('rekap.index');
 });

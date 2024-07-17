@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="SPMI">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{{ url('/html/assets/images/favicon/favicon.png') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ url('/html/assets/images/favicon/favicon.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url('/html/assets/images/logo/logo.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url('/html/assets/images/logo/logo.png') }}" type="image/x-icon">
     <title>SPMI | Admin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,7 +70,7 @@
             <ul class="nav-menus">             
               <li class="profile-nav onhover-dropdown p-0 me-0">
                 <div class="d-flex profile-media">
-                  <img class="b-r-50" src="{{ url('/html/assets/images/dashboard/profile.jpg') }}" alt="">
+                  <img class="b-r-50" style="width: 40px; height: 40px;" src="{{ isset(auth()->user()->photo) ? asset('storage/photo/'.auth()->user()->photo) : url('/html/assets/images/dashboard/profile.jpg') }}" alt="">
                   <div class="flex-grow-1"><span>{{ auth()->user()->name }}</span>
                     <p class="mb-0 font-roboto">{{ auth()->user()->name }} <i class="middle fa fa-angle-down"></i></p>
                   </div>

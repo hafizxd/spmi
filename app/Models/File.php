@@ -10,4 +10,8 @@ class File extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function cycle() {
+        return $this->belongsTo(Cycle::class);
+    }
 }

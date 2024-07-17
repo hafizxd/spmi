@@ -4,99 +4,90 @@ namespace App\Http\Controllers\Admin;
 
 use App\Constants\RepairmentStatus;
 use App\Http\Controllers\Controller;
-use App\Models\Audit;
+use App\Models\File;
 use App\Models\Cycle;
 use App\Models\Jurusan;
 use App\Models\Standard;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class FileController extends Controller
 {
-    public function index() {
-        $audits = Audit::orderBy('created_at', 'desc')->paginate(10);
+    public function index($type) {
+        $files = File::where('type', $type)->orderBy('created_at', 'desc')->paginate(10);
 
-        return view('admin.audits.audits.index', compact('audits'));
+        return view('admin.files.index', compact('files'));
     }
 
     public function create()
     {
         $cycles = Cycle::orderBy('order_no')->get();
-        $jurusan = Jurusan::orderBy('name_jurusan')->get();
-        $auditors = User::has('auditor')->orderBy('name')->get();
-
-        return view('admin.audits.audits.create', compact('cycles', 'jurusan', 'auditors'));
+        return view('admin.files.create', compact('cycles'));
     }    
 
-    public function store(Request $request) {
+    public function store($type, Request $request) {
         $validatedData = $request->validate([
             'cycle_id' => 'required|exists:cycles,id',
-            'jurusan_id' => 'required|exists:jurusan,id',
-            'prodi_id' => 'required|exists:prodi,id',
-            'auditor_1_id' => 'required|exists:users,id',
-            'auditor_2_id' => 'nullable|exists:users,id',
-            'auditor_3_id' => 'nullable|exists:users,id',
+            'title' => 'required',
+            'attachment' => 'required|file|max:10000',
         ]);
 
-        $audit = Audit::create($validatedData);
+        $validatedData['type'] = ucfirst(strtolower($type)); 
 
-        $standards = Standard::where('cycle_id', $request->cycle_id)->get();
-        foreach ($standards as $value) {
-            $audit->auditStandards()->create([
-                'standard_id' => $value->id,
-                'repairment_status' => RepairmentStatus::NOT
-            ]);
-        }
+        $fileName = time() . '_' . $request->attachment->getClientOriginalName();
+        $request->attachment->storeAs('attachment', $fileName, 'public');
 
-        alert()->success('Berhasil', 'Audit berhasil ditambahkan');
-        return redirect()->route('admin.audits.audits.index');
+        $validatedData['attachment'] = $fileName;
+
+        $file = File::create($validatedData);
+
+        alert()->success('Berhasil', 'File berhasil ditambahkan');
+        return redirect()->route('admin.files.index', $type);
     }
 
-    public function edit($id)
+    public function edit($type, $file)
     {
-        $audit = Audit::findOrFail($id);
         $cycles = Cycle::orderBy('order_no')->get();
-        $jurusan = Jurusan::orderBy('name_jurusan')->get();
-        $auditors = User::has('auditor')->orderBy('name')->get();
+        $file = File::where('type', $type)->findOrFail($file);
 
-        return view('admin.audits.audits.edit', compact('audit', 'cycles', 'jurusan', 'auditors'));
+        return view('admin.files.edit', compact('file', 'cycles'));
     }    
 
-    public function update($id, Request $request) {
+    public function update($type, $file, Request $request) {
         $validatedData = $request->validate([
             'cycle_id' => 'required|exists:cycles,id',
-            'jurusan_id' => 'required|exists:jurusan,id',
-            'prodi_id' => 'required|exists:prodi,id',
-            'auditor_1_id' => 'required|exists:users,id',
-            'auditor_2_id' => 'nullable|exists:users,id',
-            'auditor_3_id' => 'nullable|exists:users,id',
+            'title' => 'required',
+            'attachment' => 'nullable|file|max:10000',
         ]);
 
-        $audit = Audit::findOrFail($id);
+        $validatedData['type'] = ucfirst(strtolower($type)); 
 
-        if ($audit->cycle_id !== $request->cycle_id) {
-            $audit->auditStandards()->delete();
+        $file = File::where('type', $type)->findOrFail($file);
 
-            $standards = Standard::where('cycle_id', $request->cycle_id)->get();
-            foreach ($standards as $value) {
-                $audit->auditStandards()->create([
-                    'standard_id' => $value->id,
-                    'repairment_status' => RepairmentStatus::NOT
-                ]);
+        if ($request->hasFile('attachment')) {
+            if (Storage::disk('public')->exists('attachment/' . $file->attachment)) {
+                Storage::disk('public')->delete('attachment/' . $file->attachment);
             }
+
+            $fileName = time() . '_' . $request->attachment->getClientOriginalName();
+            $request->attachment->storeAs('attachment', $fileName, 'public');
+            $validatedData['attachment'] = $fileName;
+        } else {
+            unset($validatedData['attachment']);
         }
 
-        $audit->update($validatedData);        
+        $file->update($validatedData);
 
-        alert()->success('Berhasil', 'Audit berhasil diubah');
-        return redirect()->route('admin.audits.audits.index');
+        alert()->success('Berhasil', 'File berhasil diubah');
+        return redirect()->route('admin.files.index', $type);
     }
 
-    public function destroy(string $id)
+    public function destroy($type, $file)
     {
-        Audit::findOrFail($id)->delete()   ;
+        File::where('type', $type)->findOrFail($file)->delete();
 
-        alert()->success('Berhasil', 'Audit berhasil dihapus');
-        return redirect()->route('admin.audits.audits.index');
+        alert()->success('Berhasil', 'File berhasil dihapus');
+        return redirect()->route('admin.files.index', $type);
     }
 }

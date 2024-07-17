@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\ProfileController;
 use App\Models\Audit;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Route;
@@ -12,13 +13,18 @@ Route::get('/', function() {
 Route::get('login/{userRole}', [AuthController::class, 'loginIndex'])->name('auth.login.index');
 Route::post('login/{userRole}/store', [AuthController::class, 'loginStore'])->name('auth.login.store');
 
-// Route::get('register', [AuthController::class, 'registerIndex'])->name('auth.register.index');
-// Route::post('register/store', [AuthController::class, 'registerStore'])->name('auth.register.store');
 Route::get('cycles', [AuthController::class, 'cycleIndex'])->name('auth.cycles.index');
 Route::post('cycles/store', [AuthController::class, 'cycleStore'])->name('auth.cycles.store');
 
 Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+    Route::group(['prefix' => 'profile', 'as' => 'profiles.', 'controller' => ProfileController::class], function() {
+        Route::get('/', 'index')->name('index');
+        Route::put('update', 'update')->name('update');
+        Route::get('reset-password', 'passwordIndex')->name('password.index');
+        Route::put('reset-password/update', 'passwordUpdate')->name('password.update');
+    }); 
 
     Route::get('audits/{id}/print', function ($id) {
         $audit = Audit::where('is_done', true)->findOrFail($id);
