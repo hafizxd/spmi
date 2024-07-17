@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Audits;
 
+use App\Constants\RepairmentStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Audit;
 use App\Models\Cycle;
 use App\Models\Jurusan;
+use App\Models\Standard;
 use Illuminate\Http\Request;
 
 class AuditController extends Controller
@@ -34,7 +36,15 @@ class AuditController extends Controller
             'auditor_3_id' => 'required|exists:users,id',
         ]);
 
-        Audit::create($validatedData);
+        $audit = Audit::create($validatedData);
+
+        $standards = Standard::where('cycle_id', $request->cycle_id)->get();
+        foreach ($standards as $value) {
+            $audit->auditStandards()->create([
+                'standard_id' => $value->id,
+                'repairment_status' => RepairmentStatus::NOT
+            ]);
+        }
 
         alert()->success('Berhasil', 'Audit berhasil ditambahkan');
         return redirect()->route('admin.audits.audits.index');

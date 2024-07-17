@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url('/html/assets/css/responsive.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/html/assets/css/vendors/calendar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/html/assets/css/vendors/datatables.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('/html/assets/css/vendors/date-picker.css') }}">
     <link rel="stylesheet" href="{{ url('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/html/assets/css/vendors/select2.css') }}">
     <link rel="stylesheet" href="{{ url('https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css') }}">
@@ -150,6 +151,9 @@
     <script src="{{ url('/html/assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ url('/html/assets/js/datatable/datatables/datatable.custom.js') }}"></script>
     <script src="{{ url('/html/assets/js/select2/select2.full.min.js') }}"></script>
+    <script src="{{ url('/html/assets/js/datepicker/date-picker/datepicker.js') }}"></script>
+    <script src="{{ url('/html/assets/js/datepicker/date-picker/datepicker.en.js') }}"></script>
+    <script src="{{ url('/html/assets/js/datepicker/date-picker/datepicker.custom.js') }}"></script>
     <script src="{{ url('https://cdn.jsdelivr.net/npm/flatpickr') }}"></script>
     <script src="{{ url('accounting.min.js') }}"></script>
     <script>
@@ -166,7 +170,8 @@
             "info": false,
             "scrollCollapse": true, 
             "autoWidth": false,
-            'searching': false
+            'searching': false,
+            'ordering': false
         });
       });
     </script>

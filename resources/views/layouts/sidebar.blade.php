@@ -22,6 +22,11 @@
                                 <li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.dashboard') }}"><i data-feather="home"> </i><span>Dashboard</span></a>
                                 </li>
+                                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="box"></i><span>Pengawasan</span></a>
+                                    <ul class="sidebar-submenu">
+                                        <li><a href="{{ route('admin.proses_audits.index') }}">Proses Audit</a></li>
+                                    </ul>
+                                </li>
                                 <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="users"></i><span>User</span></a>
                                     <ul class="sidebar-submenu">
                                         <li><a href="{{ route('admin.users.unit-jurusan.index') }}">Unit</a></li>
@@ -39,10 +44,20 @@
                             @elseif (auth()->user()->role == \App\Constants\UserRole::AUDITOR)
                                 <li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title link-nav" href="{{ route('auditor.dashboard') }}"><i data-feather="home"> </i><span>Dashboard</span></a>
+                                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="book"></i><span>Audit</span></a>
+                                        <ul class="sidebar-submenu">
+                                            <li><a href="{{ route('auditor.audits.index') }}">Proses</a></li>
+                                        </ul>
+                                    </li>
                                 </li>
                             @elseif (auth()->user()->role == \App\Constants\UserRole::UNIT_JURUSAN || auth()->user()->role == \App\Constants\UserRole::UNIT_PRODI)
                                 <li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title link-nav" href="{{ route('unit.dashboard') }}"><i data-feather="home"> </i><span>Dashboard</span></a>
+                                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="book"></i><span>Audit</span></a>
+                                        <ul class="sidebar-submenu">
+                                            <li><a href="{{ route('unit.audits.index') }}">Proses</a></li>
+                                        </ul>
+                                    </li>
                                 </li>
                             @endif
                         </ul>

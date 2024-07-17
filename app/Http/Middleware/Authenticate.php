@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Constants\UserRole;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class Authenticate extends Middleware
@@ -21,8 +22,14 @@ class Authenticate extends Middleware
             $user = $this->auth->user();
 
             if (in_array($user->role, $roles)) {
-                return $this->auth->shouldUse('web');
+                if (session()->has('cycle_id') || $user->role == UserRole::ADMIN) {
+                    return $this->auth->shouldUse('web');
+                }
             }
+
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
         }
 
         return $this->unauthenticated($request, ['web']);

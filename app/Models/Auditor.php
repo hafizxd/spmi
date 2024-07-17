@@ -24,4 +24,8 @@ class Auditor extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
+
+    public function audits() {
+        return $this->hasMany(Audit::class, 'auditor_1_id');
+    }
 }

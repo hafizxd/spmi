@@ -52,6 +52,14 @@ class AuthController extends Controller
             'cycle_id' => 'required|exists:cycles,id',
         ]);
 
+        if (! auth()->check()) {
+            $this->logout($request);
+        }
+
+        $cycle = Cycle::findOrFail($request->cycle_id);
+
+        $request->session()->put('cycle_id', $cycle->id);
+
         $redirectRoute = '';
         switch (Auth::user()->role) {
             case UserRole::AUDITOR:
@@ -73,6 +81,7 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
+        $request->session()->forget('cycle_id');
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();

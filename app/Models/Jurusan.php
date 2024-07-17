@@ -20,4 +20,8 @@ class Jurusan extends Model
     public function prodi() {
         return $this->hasMany(Prodi::class);
     }
+
+    public function audits() {
+        return $this->hasMany(Audit::class, 'jurusan_id');
+    }
 }

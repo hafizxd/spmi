@@ -36,4 +36,16 @@ class Audit extends Model
     public function auditor3() {
         return $this->belongsTo(Auditor::class, 'auditor_3_id', 'id');
     }
+
+    public function mechanisms() {
+        return $this->hasMany(Mechanism::class);
+    }
+
+    public function auditStandards() {
+        return $this->hasMany(AuditStandard::class);
+    }
+
+    public function conclusion() {
+        return $this->hasOne(Conclusion::class);
+    }
 }

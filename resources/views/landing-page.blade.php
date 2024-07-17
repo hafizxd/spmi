@@ -55,10 +55,15 @@
 
                                 <div class="form-group">
                                     @auth
-                                        <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-primary btn-block w-100 mt-3" type="button">Dashboard Admin</a>
+                                        @if (auth()->user()->role == \App\Constants\UserRole::ADMIN)
+                                            <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-primary btn-block w-100 mt-3" type="button">Dashboard Admin</a>
+                                        @elseif (auth()->user()->role == \App\Constants\UserRole::AUDITOR)
+                                            <a href="{{ route('auditor.dashboard') }}" class="btn btn-outline-primary btn-block w-100 mt-3" type="button">Dashboard Auditor</a>
+                                        @elseif (auth()->user()->role == \App\Constants\UserRole::UNIT_PRODI || auth()->user()->role == \App\Constants\UserRole::UNIT_JURUSAN)
+                                            <a href="{{ route('unit.dashboard') }}" class="btn btn-outline-primary btn-block w-100 mt-3" type="button">Dashboard Unit</a>
+                                        @endif
                                     @else
                                         <a href="{{ route('auth.login.index') }}" class="btn btn-outline-primary btn-block w-100 mt-3" type="button">Login</a>
-                                        <a href="#" class="btn btn-outline-primary btn-block w-100 mt-3" type="button">Register</a>
                                     @endguest
                                 </div>
                                 <div class="form-group">

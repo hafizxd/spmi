@@ -52,7 +52,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
                                             <ul class="action">
-                                                <li class="edit me-2"><a href="{{ route('admin.audits.audits.edit', $value->id) }}"><i class="icon-pencil-alt"></i></a></li>
+                                                {{-- <li class="edit me-2"><a href="{{ route('admin.audits.audits.edit', $value->id) }}"><i class="icon-pencil-alt"></i></a></li> --}}
 
                                                 <li class="delete">
                                                     <form action="{{ route('admin.audits.audits.destroy', $value->id) }}" method="post">
@@ -64,7 +64,7 @@
                                             </ul>
                                         </td>
                                         <td class="text-center"><b>{{ $value->prodi->name_prodi }}</b> <br> {{ $value->jurusan->name_jurusan }}</td>
-                                        <td class="text-center"><b>{{ $value->auditor1->user->name }}</b> <br> {{ $value->auditor2->user->name }} <br> {{ $value->auditor3->user->name }}</td>
+                                        <td class="text-center"><b>{{ $value->auditor1->user->name }}</b> <br> {{ $value->auditor2?->user->name }} <br> {{ $value->auditor3?->user->name }}</td>
                                         <td class="text-center">{{ $value->rtm ?? '-' }}</td>
                                         <td class="text-center">{{ isset($value->rtm) ? 'Selesai' : 'Proses' }}</td>
                                         <td class="text-center">{{ $value->cycle->order_no . '-' . $value->cycle->year }}</td>

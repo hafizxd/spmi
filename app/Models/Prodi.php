@@ -20,4 +20,8 @@ class Prodi extends Model
     public function jurusan() {
         return $this->belongsTo(Jurusan::class, 'jurusan_id', 'id');
     }
+
+    public function audits() {
+        return $this->hasMany(Audit::class, 'prodi_id');
+    }
 }

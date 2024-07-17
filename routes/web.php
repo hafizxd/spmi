@@ -1,4 +1,6 @@
 <?php
+use App\Models\Audit;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\AuthController;
@@ -12,11 +14,18 @@ Route::post('login/store', [AuthController::class, 'loginStore'])->name('auth.lo
 
 Route::get('register', [AuthController::class, 'registerIndex'])->name('auth.register.index');
 Route::post('register/store', [AuthController::class, 'registerStore'])->name('auth.register.store');
+Route::get('cycles', [AuthController::class, 'cycleIndex'])->name('auth.cycles.index');
+Route::post('cycles/store', [AuthController::class, 'cycleStore'])->name('auth.cycles.store');
 
 Route::middleware('auth')->group(function () {
-    Route::get('cycles', [AuthController::class, 'cycleIndex'])->name('auth.cycles.index');
-    Route::post('cycles/store', [AuthController::class, 'cycleStore'])->name('auth.cycles.store');
     Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+    Route::get('audits/{id}/print', function ($id) {
+        $audit = Audit::where('is_done', true)->findOrFail($id);
+
+        $pdf = PDF::loadView('export.lap-audit', compact('audit'));
+        return $pdf->download('lap-audit-'.time().'.pdf');
+    })->name('audits.print');
 });
 
 require __DIR__ . '/web/admin.php';
