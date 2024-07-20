@@ -5,6 +5,7 @@ use App\Http\Controllers\Auditor\AuditStandardController;
 use App\Http\Controllers\Auditor\ConclusionController;
 use App\Http\Controllers\Auditor\DashboardController;
 use App\Http\Controllers\Auditor\AuditController;
+use App\Http\Controllers\Auditor\FileController;
 use App\Http\Controllers\Auditor\MechanismController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,4 +41,6 @@ Route::group(['middleware' => 'auth:' . UserRole::AUDITOR, 'prefix' => 'auditor'
             Route::put('/rtm/update', [AuditController::class, 'rtmUpdate'])->name('rtm.update');
         });
     });
+
+    Route::get('files', [FileController::class, 'index'])->name('files.index');
 });

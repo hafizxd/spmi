@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,65 +27,67 @@
     <link rel="stylesheet" type="text/css" href="{{ url('/html/assets/css/responsive.css') }}">
 
     <style>
-      body {
-        background-image: linear-gradient(to bottom, #4D6FCB, #162C65);
-      }
+        body {
+            background-image: linear-gradient(to bottom, #4D6FCB, #162C65);
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="loader-wrapper">
-      <div class="loader"></div>
+        <div class="loader"></div>
     </div>
 
-    <div class="container-fluid p-0"> 
-      <div class="row m-0">
-        <div class="col-12 p-0">    
-          <div class="login-card">
-            <div>
-              <div class="login-main"> 
-                <form action="{{ route('auth.cycles.store') }}" method="POST" class="theme-form">
-                  @csrf
+    <div class="container-fluid p-0">
+        <div class="row m-0">
+            <div class="col-12 p-0">
+                <div class="login-card">
+                    <div>
+                        <div class="login-main">
+                            <form action="{{ route('auth.cycles.store') }}" method="POST" class="theme-form">
+                                @csrf
 
-                  <div class="text-center mb-5">
-                      <img class="img-fluid for-light mb-3" src="{{ url('/html/assets/images/logo/login.png') }}" alt="loginpage">
-                      <h5>Sistem Penjamin Mutu Internal (SPMI)</h5>
-                  </div>
+                                <div class="mb-5 text-center">
+                                    <img class="img-fluid for-light mb-3" style="max-width: 120px;" src="{{ url('/html/assets/images/logo/logo2.png') }}" alt="loginpage">
+                                    <h5>Sistem Penjamin Mutu Internal (SPMI)</h5>
+                                </div>
 
-                  
-                  <div class="form-group">
-                    <label for="">Pilih Siklus</label>
-                    <select name="cycle_id" id="cycle_id" class="form-control select">
-                        @foreach ($cycles as $value)
-                            <option value="{{ $value->id }}">{{ $value->order_no }} - {{ $value->year }}</option>
-                        @endforeach
-                    </select>
-                    @error('cycle_id')
-                      <div class="invalid-feedback">
-                          {{ $message }}
-                      </div>
-                    @enderror
-                  </div>
-                  
-                  <div class="form-group">
-                    <button class="btn btn-primary btn-block w-100 mt-3" type="submit">Masuk</button>
-                  </div>
-                  <div class="form-group">
-                    <p class="text-center">Copyright &copy; SPMI Polines 2024</p>
-                  </div>
-                </form>
-              </div>
+
+                                <div class="form-group">
+                                    <label for="">Pilih Siklus</label>
+                                    <select name="cycle_id" id="cycle_id" class="form-control select">
+                                        @foreach ($cycles as $value)
+                                            <option value="{{ $value->id }}">{{ $value->order_no }} - {{ $value->year }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('cycle_id')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <button class="btn btn-primary btn-block w-100 mt-3" type="submit">Masuk</button>
+                                </div>
+                                <div class="form-group">
+                                    <p class="text-center">Copyright &copy; SPMI Polines 2024</p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <script src="{{ url('/html/assets/js/jquery-3.6.0.min.js') }}"></script>
-      <script src="{{ url('/html/assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
-      <script src="{{ url('/html/assets/js/icons/feather-icon/feather.min.js') }}"></script>
-      <script src="{{ url('/html/assets/js/icons/feather-icon/feather-icon.js') }}"></script>
-      <script src="{{ url('/html/assets/js/config.js') }}"></script>
-      <script src="{{ url('/html/assets/js/script.js') }}"></script>
+        <script src="{{ url('/html/assets/js/jquery-3.6.0.min.js') }}"></script>
+        <script src="{{ url('/html/assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ url('/html/assets/js/icons/feather-icon/feather.min.js') }}"></script>
+        <script src="{{ url('/html/assets/js/icons/feather-icon/feather-icon.js') }}"></script>
+        <script src="{{ url('/html/assets/js/config.js') }}"></script>
+        <script src="{{ url('/html/assets/js/script.js') }}"></script>
     </div>
 
     @include('sweetalert::alert')
-  </body>
+</body>
+
 </html>

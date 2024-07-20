@@ -13,10 +13,7 @@
                         <h4>Data Audit</h4>
                     </div>
                     <div class="col-md-6 p-0">
-                        <form action="{{ route('auditor.audits.store') }}" method="post">
-                            @csrf
-                            <button class="btn btn-primary btn-sm ms-2" type="submit">+ Tambah</button>
-                        </form>
+                        <a href="{{ route('auditor.files.index') }}" class="btn btn-primary btn-sm ms-2" type="button">Files</a>
                         
                     </div>
                 </div>

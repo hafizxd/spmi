@@ -12,6 +12,9 @@
                     <div class="col-md-6 d-flex mt-2 p-0">
                         <h4>Data Audit</h4>
                     </div>
+                    <div class="col-md-6 p-0">
+                        <a href="{{ route('unit.files.create') }}" class="btn btn-primary btn-sm ms-2">Files</a>
+                    </div>
                 </div>
             </div>
         </div>
