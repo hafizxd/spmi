@@ -14,7 +14,7 @@
                     </div>
                     <div class="col-md-6 p-0">
                         <a href="{{ route('auditor.files.index') }}" class="btn btn-primary btn-sm ms-2" type="button">Files</a>
-                        
+
                     </div>
                 </div>
             </div>
@@ -51,27 +51,61 @@
                                         <td class="text-center">
                                             <div style="display: grid; grid-template-columns: 1fr 2fr; grid-row-gap: 10px; align-items: center;">
                                                 <span>Mekanisme</span>
-                                                <div><a href="{{ route('auditor.audits.mechanisms.index', $value->id) }}" class="btn btn-sm btn-pill @if($value->is_mechanism) btn-primary btn-air-primary @else btn-danger btn-air-danger @endif" role="button">@if($value->is_mechanism) Sudah Diisi @else Belum Diisi @endif</a></div>
+                                                <div><a href="{{ route('auditor.audits.mechanisms.index', $value->id) }}" class="btn btn-sm btn-pill @if ($value->is_mechanism) btn-primary btn-air-primary @else btn-danger btn-air-danger @endif" role="button">
+                                                        @if ($value->is_mechanism)
+                                                            Sudah Diisi
+                                                        @else
+                                                            Belum Diisi
+                                                        @endif
+                                                    </a></div>
                                                 <span>Audit</span>
-                                                <div><a href="{{ route('auditor.audits.audit_standards.index', $value->id) }}" class="btn btn-sm @if($value->is_audit) btn-primary btn-air-primary @else btn-danger btn-air-danger @endif" role="button">@if($value->is_audit) Sudah Diisi @else Belum Diisi @endif</a></div>
+                                                <div><a href="{{ route('auditor.audits.audit_standards.index', $value->id) }}" class="btn btn-sm @if ($value->is_audit) btn-primary btn-air-primary @else btn-danger btn-air-danger @endif" role="button">
+                                                        @if ($value->is_audit)
+                                                            Sudah Diisi
+                                                        @else
+                                                            Belum Diisi
+                                                        @endif
+                                                    </a></div>
                                                 <span>Kesimpulan</span>
-                                                <div><a href="{{ route('auditor.audits.conclusions.index', $value->id) }}" class="btn btn-sm @if($value->is_conclusion) btn-primary btn-air-primary @else btn-danger btn-air-danger @endif" role="button">@if($value->is_conclusion) Sudah Diisi @else Belum Diisi @endif</a></div>
+                                                <div><a href="{{ route('auditor.audits.conclusions.index', $value->id) }}" class="btn btn-sm @if ($value->is_conclusion) btn-primary btn-air-primary @else btn-danger btn-air-danger @endif" role="button">
+                                                        @if ($value->is_conclusion)
+                                                            Sudah Diisi
+                                                        @else
+                                                            Belum Diisi
+                                                        @endif
+                                                    </a></div>
                                                 <span>Tanggal RTM</span>
-                                                <div><a href="{{ $value->is_locked ? '#' : route('auditor.audits.rtm.index', $value->id) }}" class="btn btn-sm @if(isset($value->rtm)) btn-primary btn-air-primary @else btn-danger btn-air-danger @endif" role="button">@if(isset($value->rtm)) {{ $value->rtm }} @else Belum Diisi @endif</a></div>
+                                                <div><a href="{{ $value->is_locked ? '#' : route('auditor.audits.rtm.index', $value->id) }}" class="btn btn-sm @if (isset($value->rtm)) btn-primary btn-air-primary @else btn-danger btn-air-danger @endif" role="button">
+                                                        @if (isset($value->rtm))
+                                                            {{ $value->rtm }}
+                                                        @else
+                                                            Belum Diisi
+                                                        @endif
+                                                    </a></div>
                                             </div>
                                         </td>
                                         <td class="text-center">
                                             <span>Prodi: <span style="text-decoration: underline;">{{ $value->prodi->name_prodi }}</span></span><br>
                                             <span>Jurusan: <span style="text-decoration: underline;">{{ $value->jurusan->name_jurusan }}</span></span><br>
                                             <span>Ketua Auditor: <span style="text-decoration: underline;">{{ $value->auditor1->user->name }}</span></span><br>
-                                            <span>Anggota: 
+                                            <span>Anggota:
                                                 <br><span style="text-decoration: underline;">{{ $value->auditor2?->user->name }}</span>
                                                 <br><span style="text-decoration: underline;">{{ $value->auditor3?->user->name }}</span>
                                             </span><br><br>
-                                            <span>Status Akhir: <a href="#" class="btn btn-xs @if($value->is_done) btn-primary btn-air-primary @else btn-danger btn-air-danger @endif" role="button">@if($value->is_done) Selesai @else Proses @endif</a></span>
+                                            <span>Status Akhir: <a href="#" class="btn btn-xs @if ($value->is_done) btn-primary btn-air-primary @else btn-danger btn-air-danger @endif" role="button">
+                                                    @if ($value->is_done)
+                                                        Selesai
+                                                    @else
+                                                        Proses
+                                                    @endif
+                                                </a></span>
                                         </td>
                                         <td class="text-center">
-                                            <a href="{{ route('audits.print', $value->id) }}" class="btn btn-sm @if($value->is_done) btn-primary btn-air-primary @else btn-danger btn-air-danger @endif" role="button">Print Lap Audit</a>
+                                            @if ($value->is_done)
+                                                <a href="{{ route('audits.print', $value->id) }}" class="btn btn-sm btn-primary btn-air-primary" role="button">Print Lap Audit</a>
+                                            @else
+                                                -
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

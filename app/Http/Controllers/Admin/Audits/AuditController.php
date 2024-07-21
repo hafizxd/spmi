@@ -34,9 +34,9 @@ class AuditController extends Controller
             'cycle_id' => 'required|exists:cycles,id',
             'jurusan_id' => 'required|exists:jurusan,id',
             'prodi_id' => 'required|exists:prodi,id',
-            'auditor_1_id' => 'required|exists:users,id',
-            'auditor_2_id' => 'nullable|exists:users,id',
-            'auditor_3_id' => 'nullable|exists:users,id',
+            'auditor_1_id' => 'required|exists:auditors,id',
+            'auditor_2_id' => 'nullable|exists:auditors,id',
+            'auditor_3_id' => 'nullable|exists:auditors,id',
         ]);
 
         $audit = Audit::create($validatedData);
