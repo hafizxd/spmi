@@ -2,7 +2,7 @@
 @section('content')
     <ol class="breadcrumb p-l-0">
         <li class="breadcrumb-item"><a href="#">User</a></li>
-        <li class="breadcrumb-item active">Unit Jurusan</li>
+        <li class="breadcrumb-item active">Unit</li>
     </ol>
 
     <div class="row">
@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="row">
                     <div class="col-md-6 d-flex mt-2 p-0">
-                        <h4>Data Unit Jurusan</h4>
+                        <h4>Data Unit</h4>
                     </div>
                     <div class="col-md-6 p-0">
                         <a href="{{ route('admin.users.unit-jurusan.create') }}" class="btn btn-primary btn-sm ms-2">+ Tambah</a>
@@ -41,7 +41,7 @@
                                     <th width="5%">Actions</th>
                                     <th>Jurusan</th>
                                     <th>Kajur</th>
-                                    <th>NIDN</th>
+                                    <th>NIP</th>
                                     <th>Foto</th>
                                 </tr>
                             </thead>

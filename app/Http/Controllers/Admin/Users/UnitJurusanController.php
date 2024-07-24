@@ -60,7 +60,7 @@ class UnitJurusanController extends Controller
             'name_jurusan' => $request->name_jurusan,
         ]);
 
-        alert()->success('Berhasil', 'Unit Jurusan berhasil ditambahkan');
+        alert()->success('Berhasil', 'Unit berhasil ditambahkan');
         return redirect()->route('admin.users.unit-jurusan.index');
     }
 
@@ -103,7 +103,7 @@ class UnitJurusanController extends Controller
             'name_jurusan' => $request->name_jurusan,
         ]);
 
-        alert()->success('Berhasil', 'Unit Jurusan berhasil diedit');
+        alert()->success('Berhasil', 'Unit berhasil diedit');
         return redirect()->route('admin.users.unit-jurusan.index');
     }
 
@@ -111,7 +111,7 @@ class UnitJurusanController extends Controller
     {
         User::where('role', UserRole::UNIT_JURUSAN)->findOrFail($id)->delete();
 
-        alert()->success('Berhasil', 'Unit Jurusan berhasil dihapus');
+        alert()->success('Berhasil', 'Unit berhasil dihapus');
         return redirect()->route('admin.users.unit-jurusan.index');
     }
 }

@@ -35,7 +35,7 @@
                             <thead>
                                 <tr>
                                     <th width="1%">No.</th>
-                                    <th>Program Studi</th>
+                                    <th>Program Studi / Sub Unit</th>
                                     @foreach ($incompatibilities as $value)
                                         <th>{{ $value->name }}</th>
                                     @endforeach

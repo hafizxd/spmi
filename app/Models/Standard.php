@@ -14,4 +14,8 @@ class Standard extends Model
     public function cycle() {
         return $this->belongsTo(Cycle::class);
     }
+
+    public function prodi() {
+        return $this->belongsTo(Prodi::class, 'prodi_id');
+    }
 }

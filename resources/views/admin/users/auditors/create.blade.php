@@ -58,7 +58,7 @@
                             @enderror
                         </div>
                         <div class="col mb-4">
-                            <label for="nidn">NIDN</label>
+                            <label for="nidn">NIP</label>
                             <input type="text" class="form-control @error('nidn') is-invalid @enderror" id="nidn" name="nidn" value="{{ old('nidn') }}" placeholder="Nomor Induk Dosen Nasional">
                             @error('nidn')
                                 <div class="invalid-feedback">

@@ -27,7 +27,7 @@ class UnitProdiController extends Controller
 
         $request->validate([
             'name_prodi' => 'required',
-            'jenjang' => 'required|in:Diploma,Sarjana,Magister',
+            'jenjang' => 'required|in:Diploma,Sarjana,Magister,Non Jenjang',
             'name' => 'required',
             'nidn' => 'nullable',
             'phone' => 'nullable',
@@ -97,7 +97,7 @@ class UnitProdiController extends Controller
 
         $request->validate([
             'name_prodi' => 'required',
-            'jenjang' => 'required|in:Jenjang,Sarjana,Magister',
+            'jenjang' => 'required|in:Diploma,Sarjana,Magister,Non Jenjang',
             'name' => 'required',
             'nidn' => 'nullable',
             'phone' => 'nullable',

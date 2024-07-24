@@ -21,7 +21,7 @@
         </div>
         <div class="col-sm-12">
             <div class="card">
-                <form class="p-4" method="post" action="{{ route('admin.audits.standards.store') }}">
+                <form class="p-4" method="post" action="{{ route('admin.audits.standards.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-row">
                         <div class="col mb-4">
@@ -33,6 +33,20 @@
                                 @endforeach
                             </select>
                             @error('cycle_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="col mb-4">
+                            <label for="prodi_id">Prodi / Sub Unit</label>
+                            <select name="prodi_id" id="prodi_id" class="form-control js-example-basic-single @error('prodi_id') is-invalid @enderror">
+                                <option value="" disabled selected>Pilih Prodi / Sub Unit</option>
+                                @foreach ($prodi as $value)
+                                    <option value="{{ $value->id }}">{{ $value->name_prodi }}</option>
+                                @endforeach
+                            </select>
+                            @error('prodi_id')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -64,6 +78,15 @@
                                 </div>
                             </div>
                             @error('content')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="col mb-4">
+                            <label for="attachment">File</label>
+                            <input type="file" class="form-control @error('attachment') is-invalid @enderror" id="attachment" name="attachment" value="{{ old('attachment') }}">
+                            @error('attachment')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>

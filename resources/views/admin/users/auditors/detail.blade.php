@@ -28,7 +28,7 @@
                             <div style="font-weight: 700;">{{ $user->auditor->jurusan->name_jurusan }}</div>
                         </div>
                         <div class="col mb-4">
-                            <label for="name_jurusan">Program Studi</label>
+                            <label for="name_jurusan">Program Studi / Sub Unit</label>
                             <div style="font-weight: 700;">{{ $user->auditor->prodi->name_prodi }}</div>
                         </div>
                         <div class="col mb-4">
@@ -36,7 +36,7 @@
                             <div style="font-weight: 700;">{{ $user->name }}</div>
                         </div>
                         <div class="col mb-4">
-                            <label for="nidn">NIDN</label>
+                            <label for="nidn">NIP</label>
                             <div style="font-weight: 700;">{{ $user->nidn }}</div>
                         </div>
                         <div class="col mb-4">

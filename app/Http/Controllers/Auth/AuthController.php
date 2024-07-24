@@ -34,9 +34,9 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $remember_me)) {
             $request->session()->regenerate();
 
-            if (Auth::user()->role == UserRole::ADMIN) {
-                return redirect()->route('admin.dashboard');
-            }
+            // if (Auth::user()->role == UserRole::ADMIN) {
+            //     return redirect()->route('admin.dashboard');
+            // }
 
             return redirect()->route('auth.cycles.index');
         }
@@ -68,6 +68,10 @@ class AuthController extends Controller
 
         $redirectRoute = '';
         switch (Auth::user()->role) {
+            case UserRole::ADMIN:
+                $redirectRoute = 'admin.dashboard';
+                break;
+            
             case UserRole::AUDITOR:
                 $redirectRoute = 'auditor.dashboard';
                 break;

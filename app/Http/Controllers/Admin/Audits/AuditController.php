@@ -41,7 +41,7 @@ class AuditController extends Controller
 
         $audit = Audit::create($validatedData);
 
-        $standards = Standard::where('cycle_id', $request->cycle_id)->get();
+        $standards = Standard::where('cycle_id', $request->cycle_id)->where('prodi_id', $request->prodi_id)->get();
         foreach ($standards as $value) {
             $audit->auditStandards()->create([
                 'standard_id' => $value->id,

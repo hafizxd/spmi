@@ -32,7 +32,7 @@
                             <div style="font-weight: 700;">{{ $user->jabatan }}</div>
                         </div>
                         <div class="col mb-4">
-                            <label for="nidn">NIDN</label>
+                            <label for="nidn">NIP</label>
                             <div style="font-weight: 700;">{{ $user->nidn }}</div>
                         </div>
                         <div class="col mb-4">

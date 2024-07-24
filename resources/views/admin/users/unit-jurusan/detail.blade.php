@@ -2,7 +2,7 @@
 @section('content')
     <ol class="breadcrumb p-l-0">
         <li class="breadcrumb-item"><a href="#">User</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('admin.users.unit-jurusan.index') }}">Unit Jurusan</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('admin.users.unit-jurusan.index') }}">Unit</a></li>
         <li class="breadcrumb-item active">Detail</li>
     </ol>
 
@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="row">
                     <div class="col-md-6 d-flex mt-2 p-0">
-                        <h4>Detail Unit Jurusan</h4>
+                        <h4>Detail Unit</h4>
                     </div>
                     <div class="col-md-6 p-0">
                         <a href="{{ route('admin.users.unit-jurusan.index') }}" class="btn btn-danger btn-sm ms-2">Back</a>
@@ -32,7 +32,7 @@
                             <div style="font-weight: 700;">{{ $user->name }}</div>
                         </div>
                         <div class="col mb-4">
-                            <label for="nidn">NIDN</label>
+                            <label for="nidn">NIP</label>
                             <div style="font-weight: 700;">{{ $user->nidn }}</div>
                         </div>
                         <div class="col mb-4">
@@ -86,7 +86,7 @@
                                     <th>Prodi</th>
                                     <th>Jenjang</th>
                                     <th>Kaprodi</th>
-                                    <th>NIDN</th>
+                                    <th>NIP</th>
                                     <th>Foto</th>
                                 </tr>
                             </thead>

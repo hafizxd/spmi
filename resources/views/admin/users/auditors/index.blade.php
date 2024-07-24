@@ -41,7 +41,7 @@
                                     <th width="5%">Actions</th>
                                     <th>Prodi / Jurusan</th>
                                     <th>Auditor</th>
-                                    <th>NIDN</th>
+                                    <th>NIP</th>
                                     <th>Foto</th>
                                 </tr>
                             </thead>

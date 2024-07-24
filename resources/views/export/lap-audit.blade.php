@@ -39,12 +39,12 @@
                             <tbody>
                                 <tr>
                                     <td>&nbsp;</td>
-                                    <td>Program Studi</td>
+                                    <td>Program Studi / Sub Unit</td>
                                     <td>: {{ $audit->prodi?->name_prodi }}</td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
-                                    <td>Ketua Program Studi</td>
+                                    <td>Ketua Program Studi / Sub Unit</td>
                                     <td>: {{ $audit->prodi?->user?->name }}</td>
                                 </tr>
                                 <tr>
@@ -95,12 +95,12 @@
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td>Program Studi</td>
+                            <td>Program Studi / Sub Unit</td>
                             <td>: {{ $audit->prodi?->name_prodi }}</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td>Kepala Program Studi</td>
+                            <td>Kepala Program Studi / Sub Unit</td>
                             <td>: {{ $audit->prodi?->user?->name }}</td>
                         </tr>
                         <tr>
@@ -177,7 +177,7 @@
                     <li>Untuk memeriksa kesesuaian atau ketidaksesuaian pelaksanaan standar yang telah ditetapkan.</li>
                     <li>Untuk menyiapkan laporan kepada Teraudit (Auditee) sebagai dasar perbaikan mutu selanjutnya.</li>
                     <li>Untuk memberikan kesempatan Teraudit memperbaiki Sistem Penjaminan Mutu.</li>
-                    <li>Untuk membantu Instansi/Program Studi mempersiapkan diri dalam rangka Audit Ekternal atau Akreditasi.</li>
+                    <li>Untuk membantu Instansi/Program Studi / Sub Unit mempersiapkan diri dalam rangka Audit Ekternal atau Akreditasi.</li>
                 </ol>
                 <br><br>
                 <h5>C. MANFAAT</h5>
@@ -400,7 +400,7 @@
                 <h5>G. KESIMPULAN AUDIT</h5>
                 <p>Tim Auditor menyimpulkan :</p>
                 <ol type="a">
-                    <li>Sistem dokumen cukup lengkap untuk mendukung pelaksanaan Sistem Penjaminan Mutu Internal dan Pengelolaan Mutu Program Studi (Jawaban :
+                    <li>Sistem dokumen cukup lengkap untuk mendukung pelaksanaan Sistem Penjaminan Mutu Internal dan Pengelolaan Mutu Program Studi / Sub Unit (Jawaban :
                         <b>
                             {{ $audit->conclusion?->is_document_complete ? 'Ya' : 'Tidak' }} </b>)
                     </li>

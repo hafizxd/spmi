@@ -2,7 +2,7 @@
 @section('content')
     <ol class="breadcrumb p-l-0">
         <li class="breadcrumb-item"><a href="#">User</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('admin.users.unit-jurusan.index') }}">Unit Jurusan</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('admin.users.unit-jurusan.index') }}">Unit</a></li>
         <li class="breadcrumb-item active"><a href="{{ route('admin.users.unit-jurusan.show', $userJurusan->id) }}">Unit Prodi</a></li>
         <li class="breadcrumb-item active">Tambah</li>
     </ol>
@@ -53,6 +53,10 @@
                                     <input class="form-check-input" id="magister" type="radio" name="jenjang" value="Magister">
                                     <label class="form-check-label mb-0" for="magister">Magister</label>
                                 </div>
+                                <div class="form-check form-check-inline radio radio-primary">
+                                    <input class="form-check-input" id="non_jenjang" type="radio" name="jenjang" value="Non Jenjang">
+                                    <label class="form-check-label mb-0" for="non_jenjang">Non Jenjang</label>
+                                </div>
                             </div>
                             @error('jenjang')
                                 <div class="invalid-feedback">
@@ -61,7 +65,7 @@
                             @enderror
                         </div>
                         <div class="col mb-4">
-                            <label for="name">Kepala Program Studi</label>
+                            <label for="name">Kepala Program Studi / Sub Unit</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" placeholder="Nama Kaprodi Lengkap Gelar">
                             @error('name')
                                 <div class="invalid-feedback">
@@ -70,7 +74,7 @@
                             @enderror
                         </div>
                         <div class="col mb-4">
-                            <label for="nidn">NIDN</label>
+                            <label for="nidn">NIP</label>
                             <input type="text" class="form-control @error('nidn') is-invalid @enderror" id="nidn" name="nidn" value="{{ old('nidn') }}" placeholder="Nomor Induk Dosen Nasional">
                             @error('nidn')
                                 <div class="invalid-feedback">

@@ -73,6 +73,9 @@
                                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="book"></i><span>Audit</span></a>
                                         <ul class="sidebar-submenu">
                                             <li><a href="{{ route('unit.audits.index') }}">Proses</a></li>
+                                            @if(auth()->user()->role == \App\Constants\UserRole::UNIT_PRODI)
+                                                <li><a href="{{ route('unit.audits.standards.index') }}">Standard</a></li>
+                                            @endif
                                         </ul>
                                     </li>
                                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="user"></i><span>Profile</span></a>

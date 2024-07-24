@@ -2,7 +2,7 @@
 @section('content')
 <ol class="breadcrumb p-l-0">
     <li class="breadcrumb-item"><a href="#">User</a></li>
-    <li class="breadcrumb-item active"><a href="{{ route('admin.users.unit-jurusan.index') }}">Unit Jurusan</a></li>
+    <li class="breadcrumb-item active"><a href="{{ route('admin.users.unit-jurusan.index') }}">Unit</a></li>
     <li class="breadcrumb-item active"><a href="{{ route('admin.users.unit-jurusan.show', $user->prodi->jurusan->user->id) }}">Unit Prodi</a></li>
     <li class="breadcrumb-item active">Edit</li>
 </ol>
@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="row">
                     <div class="col-md-6 d-flex mt-2 p-0">
-                        <h4>Edit Unit Jurusan</h4>
+                        <h4>Edit Unit</h4>
                     </div>
                     <div class="col-md-6 p-0">
                         <a href="{{ route('admin.users.unit-jurusan.show', $user->prodi->jurusan->user->id) }}" class="btn btn-danger btn-sm ms-2">Back</a>
@@ -54,6 +54,10 @@
                                     <input class="form-check-input" id="magister" type="radio" name="jenjang" value="Magister" @if($user->prodi->jenjang == 'Magister') checked @endif>
                                     <label class="form-check-label mb-0" for="magister">Magister</label>
                                 </div>
+                                <div class="form-check form-check-inline radio radio-primary">
+                                    <input class="form-check-input" id="non_jenjang" type="radio" name="jenjang" value="Non Jenjang" @if($user->prodi->jenjang == 'Non Jenjang') checked @endif>
+                                    <label class="form-check-label mb-0" for="non_jenjang">Non Jenjang</label>
+                                </div>
                             </div>
                             @error('jenjang')
                                 <div class="invalid-feedback">
@@ -62,7 +66,7 @@
                             @enderror
                         </div>
                         <div class="col mb-4">
-                            <label for="name">Kepala Program Studi</label>
+                            <label for="name">Kepala Program Studi / Sub Unit</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $user->name) }}" placeholder="Nama Kaprodi Lengkap Gelar">
                             @error('name')
                                 <div class="invalid-feedback">
@@ -71,7 +75,7 @@
                             @enderror
                         </div>
                         <div class="col mb-4">
-                            <label for="nidn">NIDN</label>
+                            <label for="nidn">NIP</label>
                             <input type="text" class="form-control @error('nidn') is-invalid @enderror" id="nidn" name="nidn" value="{{ old('nidn', $user->nidn) }}" placeholder="Nomor Induk Dosen Nasional">
                             @error('nidn')
                                 <div class="invalid-feedback">

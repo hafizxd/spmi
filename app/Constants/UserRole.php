@@ -17,7 +17,7 @@ class UserRole extends BaseConstant
         return [
             static::ADMIN => 'Admin',
             static::AUDITOR => 'Auditor',
-            static::UNIT_JURUSAN => 'Unit Jurusan',
+            static::UNIT_JURUSAN => 'Unit',
             static::UNIT_PRODI => 'Unit Prodi'
         ];
     }
