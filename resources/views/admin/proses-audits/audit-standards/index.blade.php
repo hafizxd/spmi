@@ -26,6 +26,7 @@
                                     <th>Perbaikan</th>
                                     <th>Standar</th>
                                     <th>Butir Standar</th>
+                                    <th>File</th>
                                     <th>Temuan KTS</th>
                                     <th>Uraian Ketidaksesuaian</th>
                                 </tr>
@@ -41,6 +42,7 @@
                                         </td>
                                         <td>{{ $value->standard?->brief_content }}</td>
                                         <td>{!! nl2br($value->standard?->content) !!}</td>
+                                        <td><a target="_blank" href="{{ asset("storage/standards/".$value->standard?->attachment) }}">{{ $value->standard?->attachment }}</a></td>
                                         <td>{{ $value->incompatibility?->name }}</td>
                                         <td>{{ $value->incompatibility_note }}</td>
                                     </tr>

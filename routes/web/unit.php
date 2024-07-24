@@ -21,9 +21,11 @@ Route::group(['middleware' => 'auth:' . UserRole::UNIT_JURUSAN . ',' . UserRole:
             Route::put('lock', [AuditController::class, 'lock'])->name('lock');
             Route::get('print', [AuditController::class, 'print'])->name('print');
         });
-
-        Route::get('standards', [StandardController::class, 'index'])->name('standards.index');
     });
+
+    Route::get('standards', [StandardController::class, 'index'])->name('standards.index');
+    Route::get('standards/{id}/edit', [StandardController::class, 'edit'])->name('standards.edit');
+    Route::put('standards/{id}/update', [StandardController::class, 'update'])->name('standards.update');
 
     Route::get('files/create', [FileController::class, 'create'])->name('files.create');
     Route::post('files/store', [FileController::class, 'store'])->name('files.store');

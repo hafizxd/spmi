@@ -65,6 +65,7 @@ class StandardController extends Controller
     {
         $validated = $request->validate([
             'cycle_id' => 'required|exists:cycles,id',
+            'prodi_id' => 'required|exists:prodi,id',
             'name' => 'required',
             'brief_content' => 'nullable',
             'content' => 'nullable',

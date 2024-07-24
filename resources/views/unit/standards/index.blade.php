@@ -18,7 +18,7 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header pb-0">
-                    <form action="{{ route('unit.audits.standards.index') }}">
+                    <form action="{{ route('unit.standards.index') }}">
                         <div class="row mb-2">
                             <div class="col-2">
                                 <input type="text" placeholder="Search...." class="form-control" value="{{ request('search') }}" name="search">
@@ -39,6 +39,7 @@
                                     <th>Untuk Pilihan</th>
                                     <th>Isi Standar</th>
                                     <th>File</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,6 +55,7 @@
                                             @endif
                                         </td>
                                         <td><a target="_blank" href="{{ asset("storage/standards/".$value->attachment) }}">{{ $value->attachment }}</a></td>
+                                        <td><a href="{{ route('unit.standards.edit', $value->id) }}" class="btn btn-primary">Upload File</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

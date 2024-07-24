@@ -84,16 +84,6 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="col mb-4">
-                            <label for="attachment">File</label><br>
-                            <a target="_blank" href="{{ asset("storage/standards/".$standard->attachment) }}">{{ $standard->attachment }}</a>
-                            <input type="file" class="form-control @error('attachment') is-invalid @enderror" id="attachment" name="attachment" value="{{ old('attachment') }}">
-                            @error('attachment')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
                         <button type="submit" class="btn btn-primary float-right">Submit</button>
                     </div>
                 </form>

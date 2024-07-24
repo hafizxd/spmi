@@ -74,7 +74,7 @@
                                         <ul class="sidebar-submenu">
                                             <li><a href="{{ route('unit.audits.index') }}">Proses</a></li>
                                             @if(auth()->user()->role == \App\Constants\UserRole::UNIT_PRODI)
-                                                <li><a href="{{ route('unit.audits.standards.index') }}">Standard</a></li>
+                                                <li><a href="{{ route('unit.standards.index') }}">Standard</a></li>
                                             @endif
                                         </ul>
                                     </li>
