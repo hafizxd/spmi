@@ -16,6 +16,7 @@ Route::group(['middleware' => 'auth:' . UserRole::UNIT_JURUSAN . ',' . UserRole:
         Route::group(['prefix' => '{id}'], function () {
             Route::get('mechanisms', [AuditController::class, 'indexMechanism'])->name('mechanisms.index');
             Route::get('audit-standards', [AuditController::class, 'indexAuditStandard'])->name('audit_standards.index');
+            Route::get('audit-standards/{auditStandardId}', [AuditController::class, 'showAuditStandard'])->name('audit_standards.show');
             Route::get('conclusions', [AuditController::class, 'indexConclusion'])->name('conclusions.index');
             
             Route::put('lock', [AuditController::class, 'lock'])->name('lock');
@@ -24,6 +25,7 @@ Route::group(['middleware' => 'auth:' . UserRole::UNIT_JURUSAN . ',' . UserRole:
     });
 
     Route::get('standards', [StandardController::class, 'index'])->name('standards.index');
+    Route::get('standards/{id}/detail', [StandardController::class, 'detail'])->name('standards.show');
     Route::get('standards/{id}/edit', [StandardController::class, 'edit'])->name('standards.edit');
     Route::put('standards/{id}/update', [StandardController::class, 'update'])->name('standards.update');
 

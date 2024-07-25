@@ -29,6 +29,7 @@
                                     <th>File</th>
                                     <th>Temuan KTS</th>
                                     <th>Uraian Ketidaksesuaian</th>
+                                    {{-- <th>Aksi</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -41,10 +42,17 @@
                                             </a>
                                         </td>
                                         <td>{{ $value->standard?->brief_content }}</td>
-                                        <td>{!! nl2br($value->standard?->content) !!}</td>
+                                        <td>
+                                            {{ $value->standard?->content }}
+                                        </td>
                                         <td><a target="_blank" href="{{ asset("storage/standards/".$value->standard?->attachment) }}">{{ $value->standard?->attachment }}</a></td>
                                         <td>{{ $value->incompatibility?->name }}</td>
                                         <td>{{ $value->incompatibility_note }}</td>
+                                        {{-- <td>
+                                            <ul class="action">
+                                                <li class="detail me-3"><a href="{{ route('unit.audits.audit_standards.show', ['id' => $value->audit->id, 'auditStandardId' => $value->id]) }}"><i class="icon-eye"></i></a></li>
+                                            </ul>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -18,6 +18,13 @@ class StandardController extends Controller
         return view('unit.standards.index', compact('standards'));
     }
 
+    public function detail($id)
+    {
+        $standard = Standard::findOrFail($id);
+
+        return view('unit.standards.detail', compact('standard'));
+    }
+
     public function edit($id)
     {
         $standard = Standard::findOrFail($id);

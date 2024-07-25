@@ -53,6 +53,15 @@ class AuditController extends Controller
         return view('unit.audit-standards.index', compact('audit',  'standards'));
     }
 
+    public function showAuditStandard($id, $auditStandardId) 
+    {
+        $audit = $this->findAudit($id);
+        $auditStandard = $audit->auditStandards()->findOrFail($auditStandardId);
+        $standard = $auditStandard->standard;
+
+        return view('unit.audit-standards.detail', compact('audit',  'standard'));
+    }
+
     public function indexConclusion($id) 
     {
         $audit = $this->findAudit($id);

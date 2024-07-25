@@ -55,7 +55,12 @@
                                             @endif
                                         </td>
                                         <td><a target="_blank" href="{{ asset("storage/standards/".$value->attachment) }}">{{ $value->attachment }}</a></td>
-                                        <td><a href="{{ route('unit.standards.edit', $value->id) }}" class="btn btn-primary">Upload File</a></td>
+                                        <td>
+                                            <ul class="action">
+                                                <li class="detail me-3"><a href="{{ route('unit.standards.show', $value->id) }}"><i class="icon-eye"></i></a></li>
+                                                <li class="edit me-2"><a href="{{ route('unit.standards.edit', $value->id) }}"><i class="icon-upload"></i></a></li>
+                                            </ul>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
