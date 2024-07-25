@@ -42,9 +42,7 @@
                                             </a>
                                         </td>
                                         <td>{{ $value->standard?->brief_content }}</td>
-                                        <td>
-                                            {{ $value->standard?->content }}
-                                        </td>
+                                        <td>{!! nl2br($value->standard?->content) !!}</td>
                                         <td><a target="_blank" href="{{ asset("storage/standards/".$value->standard?->attachment) }}">{{ $value->standard?->attachment }}</a></td>
                                         <td>{{ $value->incompatibility?->name }}</td>
                                         <td>{{ $value->incompatibility_note }}</td>
