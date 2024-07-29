@@ -246,7 +246,7 @@
                                 <td><small>{!! nl2br($value->standard?->content) !!}</small></td>
                                 <td class="text-center"><small>{{ $value->incompatibility?->name }}</small></td>
                                 <td><small>
-                                        {{ $value->incompatibility_name }}
+                                        {{ $value->incompatibility_note }}
                                     </small></td>
 
                                 <td><small>{{ \App\Constants\RepairmentStatus::label($value->repairment_status) }}</small></td>
